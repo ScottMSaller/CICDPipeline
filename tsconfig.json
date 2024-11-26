@@ -4,8 +4,7 @@
     "target": "ES2020",
     "baseUrl": "./", // Ensures path aliases resolve correctly
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@utils/*": ["src/utils/*"]
+      "@components/*": ["client/src/components/*"]
     },
 
     /* Modules */
@@ -31,7 +30,5 @@
     "noImplicitReturns": true,
     "noImplicitOverride": true,
     "useUnknownInCatchVariables": true
-  },
-  "include": ["src/**/*"], // Include your project's source files
-  "exclude": ["node_modules", "dist", "cypress"] // Explicitly exclude Cypress tests
+  }
 }
