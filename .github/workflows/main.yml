@@ -21,6 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v1
 
+      # Set up Node.js
       - name: Use Node.js 21.x
         uses: actions/setup-node@v1
         with:
@@ -34,15 +35,20 @@ jobs:
       - name: Run Lint
         run: echo "skiping lint"
 
+      # Build the application
       - name: Run Build
         run: npm run build
 
-        # Start the server in the background
+      # Start the server in the background
       - name: Start Server
         env: 
-            MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }} # Load secret into environment variable
         run: |
-            npm run start & npx wait-on http://localhost:3001
+          npm run start &
+          npx wait-on http://localhost:3001
       
+      # Run tests
       - name: Run Tests
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }} # Pass the secret to the test environment
         run: npm run test
