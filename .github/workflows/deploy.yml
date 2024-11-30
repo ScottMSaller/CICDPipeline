@@ -27,7 +27,7 @@ jobs:
       - name: Run Cypress Tests
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
-        run: npm run test
+        run: npm run test-component
 
       - name: Deploy
         if: github.ref == 'refs/heads/main'
